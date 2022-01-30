@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Arbitrary Style Transfer</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@magenta/image@0.2.1/dist/magentaimage.min.js"></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <h1>
+          <b>Arbitrary Style Transfer</b>
+        </h1>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="left">
+        <div class="frame">
+          <h2>Content Image <label>upload photo <input type="file" onchange="loadContent(event)"></label></h2>
+          <img id="content" class="image" crossorigin="anonymous" src="https://cdn.glitch.com/93893683-46da-4058-829c-a05792722f2b%2Fcontent.jpg?1545163443723"/>
+        </div>
+        <div class="right">
+          <div class="frame" style="float: left;">
+             <h2>Style Image 1<label>upload style <input type="file" onchange="loadStyle1(event)"></label></h2>
+             <img id="style1" class="image" crossorigin="anonymous" src="https://cdn.glitch.com/93893683-46da-4058-829c-a05792722f2b%2Fstyle.jpg?1545163447216" />
+          </div>
+          <div class="frame">
+            <h2>Style Image 2<label>upload style <input type="file" onchange="loadStyle2(event)"></label></h2>
+            <img id="style2" class="image" crossorigin="anonymous" src="https://uploads0.wikiart.org/images/claude-lorrain/seaport-with-a-big-tower.jpg" />
+         </div>
+        </div>
+      </div>
+
+      <div class="frame">
+        <!-- <h2 class="dark">Step 3. <span id="loading">Transmogrifying ...</span><span id="ready" hidden>Profit!</span></h2> -->
+		<h2 style="color: #000">Step 3. <button id="stylizeBtn" onclick="stylize()">Stylize</button><span id="loading" hidden="true">Transmogrifying ...</span><span id="ready" hidden>Profit!</span></h2>
+
+        <canvas id="stylized" height="250px"></canvas>
+        <canvas id="stylized2" height="250px"></canvas>
+      </div>
+    </div>
+
+  <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+  <script src="https://button.glitch.me/button.js"></script>
+  </body>
+</html>
