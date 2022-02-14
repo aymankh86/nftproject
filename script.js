@@ -3,6 +3,7 @@ const canvas = document.getElementById('stylized');
 const canvas2 = document.getElementById('stylized2');
 const ctx = canvas.getContext('2d');
 const ctx2 = canvas2.getContext('2d');
+const styleWeight = document.getElementById('styleWeight');
 const contentImg = document.getElementById('content');
 const styleImg1 = document.getElementById('style1');
 const styleImg2 = document.getElementById('style2');
@@ -34,16 +35,16 @@ startLoading();
   canvas.height = contentImg.height;
 
   // This does all the work!
-  model.stylize(styleImg1, styleImg2, 0.5).then((imageData) => {
-		model.stylize(contentImg, imageData).then((imageData2) => {
-			stopLoading();
-    	ctx.putImageData(imageData2, 0, 0);
-		})
-  });
-	// model.stylize(contentImg, styleImg1, 1).then((imageData2) => {
-	// 	stopLoading();
-	// 	ctx.putImageData(imageData2, 0, 0);
-	// })
+  // model.stylize(styleImg1, styleImg2, 0.5).then((imageData) => {
+	// 	model.stylize(contentImg, imageData).then((imageData2) => {
+	// 		stopLoading();
+  //   	ctx.putImageData(imageData2, 0, 0);
+	// 	})
+  // });
+	model.stylize(contentImg, styleImg1, styleWeight.value / 100).then((imageData2) => {
+		stopLoading();
+		ctx.putImageData(imageData2, 0, 0);
+	})
 }
 
 function loadImage(event, imgElement) {
